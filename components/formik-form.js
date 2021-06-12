@@ -1,4 +1,5 @@
 import React from "react";
+import { View } from "react-native";
 
 import { useFormik } from "formik";
 
@@ -17,8 +18,8 @@ const FormikForm = () => {
       onSubmit={formik.handleSubmit}
       className="w-full flex flex-wrap font-sans justify-center content-center items-center"
     >
-      <div className="w-full flex-auto">
-        <div className="flex-1 m-auto text-center mt-4">
+      <View className="w-full flex-auto">
+        <View className="flex-1 m-auto text-center mt-4">
           <input
             onChange={formik.handleChange}
             value={formik.values.timeTotal}
@@ -29,9 +30,9 @@ const FormikForm = () => {
             disabled
             className="h-20 w-full p-3 m-auto subpixel-antialiased text-center text-5xl text-cyan-400 border-2 border-gray-100 rounded-lg"
           />
-        </div>
-      </div>
-      <div className="flex-1 m-auto text-center my-10 mr-4">
+        </View>
+      </View>
+      <View className="flex-1 m-auto text-center my-10 mr-4">
         <label
           htmlFor="timeOne"
           className="h-10 w-full mb-8 subpixel-antialiased  text-center text-gray-700 font-semibold uppercase"
@@ -48,8 +49,8 @@ const FormikForm = () => {
           required
           className="h-20 w-full p-3 m-auto text-center text-3xl text-cyan-400 border-2 border-gray-300 rounded-lg"
         />
-      </div>
-      <div className="flex-1 m-auto text-center my-10">
+      </View>
+      <View className="flex-1 m-auto text-center my-10">
         <label
           htmlFor="timeTwo"
           className="h-10 w-full mb-8 subpixel-antialiased text-center text-gray-700 font-semibold uppercase"
@@ -66,8 +67,8 @@ const FormikForm = () => {
           required
           className="h-20 w-full p-3 m-auto text-center text-3xl text-cyan-400 border-2 border-gray-300 rounded-lg"
         />
-      </div>
-      <div className="w-full flex-auto">
+      </View>
+      <View className="w-full flex-auto">
         <button
           id="button"
           type="submit"
@@ -75,7 +76,7 @@ const FormikForm = () => {
         >
           Calculate
         </button>
-      </div>
+      </View>
     </form>
   );
 };
