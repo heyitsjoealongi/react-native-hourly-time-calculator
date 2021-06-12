@@ -1,15 +1,14 @@
-import { StatusBar } from "expo-status-bar";
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import "./styles/style.css";
+import "tailwindcss/tailwind.css";
 
-import Header from "../components/header";
-import Form from "../components/form";
-import Footer from "../components/footer";
+import React from "react";
+
+import Form from "./components/form";
+import Footer from "./components/footer";
 
 export default function App() {
   return (
     <>
-      <Header />
       <main>
         <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
           <div className="relative py-3 sm:max-w-xl sm:mx-auto">
@@ -31,12 +30,3 @@ export default function App() {
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
