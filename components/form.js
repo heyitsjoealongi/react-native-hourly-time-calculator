@@ -1,7 +1,7 @@
 import React from "react";
 import $ from "jquery";
 
-import FormikForm from "./formik-form";
+import TimeForm from "./time-form";
 
 class Form extends React.Component {
   componentDidMount() {
@@ -24,7 +24,7 @@ class Form extends React.Component {
   render() {
     return (
       <>
-        <FormikForm />
+        <TimeForm />
       </>
     );
   }
