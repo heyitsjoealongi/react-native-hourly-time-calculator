@@ -27,6 +27,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "Mobile/Native Application — React Native & Tailwind Powered by Expo.js | Calculate the duration of time that occurred between two times. ",
+    "githubUrl": "https://github.com/collectedview/expo-hourly-time-calculator"
   }
 }
