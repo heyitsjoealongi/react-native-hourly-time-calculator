@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   SafeAreaView,
   View,
@@ -17,47 +17,42 @@ const DismissKeyboard = ({ children }) => (
 );
 
 export default function App() {
-  const [timeOne, onChangeTimeOne] = React.useState(null);
-  const [timeTwo, onChangeTimeTwo] = React.useState(null);
-  const [timeTotal, onChangeTimeTotal] = React.useState(null);
+  const [timeOne, setTimeOne] = useState(0);
+  const [timeTwo, setTimeTwo] = useState(0);
+  const [timeTotal, setTimeTotal] = useState(timeOne + timeTwo);
+
+  function calculateTotal() {
+    setTimeTotal((timeTwo * 24 - timeOne * 24) / 24 / 100);
+  }
 
   return (
-    <DismissKeyboard>
-      <SafeAreaView style={styles.container}>
-        <View style={styles.calculator}>
-          <View style={styles.totalGroup}>
-            <Text style={styles.heading}>Calculate Your Hours</Text>
-            <TextInput
-              style={styles.inputTotal}
-              onChangeText={onChangeTimeTotal}
-              value={timeTotal}
-              placeholder="00:00"
-              keyboardType="numeric"
-              disabled
-            />
-          </View>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.calculator}>
+        <View style={styles.totalGroup}>
+          <Text style={styles.heading}>Calculate Your Hours</Text>
+          <Text style={styles.inputTotal}>{timeTotal}</Text>
+        </View>
+        <DismissKeyboard>
           <View style={styles.inputGroup}>
             <TextInput
-              style={styles.inputTwo}
-              onChangeText={onChangeTimeOne}
+              style={styles.inputOne}
               value={timeOne}
-              placeholder="00:00"
               keyboardType="numeric"
+              onChangeText={(text) => setTimeOne(+text)}
             />
             <TextInput
-              style={styles.inputOne}
-              onChangeText={onChangeTimeTwo}
+              style={styles.inputTwo}
               value={timeTwo}
-              placeholder="00:00"
               keyboardType="numeric"
+              onChangeText={(text) => setTimeTwo(+text)}
             />
           </View>
-          <View style={styles.buttonGroup}>
-            <Button title="Calculate" color="#4b5563" />
-          </View>
+        </DismissKeyboard>
+        <View style={styles.buttonGroup}>
+          <Button title="Calculate" color="#4b5563" onPress={calculateTotal} />
         </View>
-      </SafeAreaView>
-    </DismissKeyboard>
+      </View>
+    </SafeAreaView>
   );
 }
 
