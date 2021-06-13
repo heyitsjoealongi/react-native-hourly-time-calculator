@@ -1,67 +1,80 @@
 import React from "react";
-import { View, Text, TextInput, Button, StyleSheet } from "react-native";
-
-import TimeField from "react-simple-timefield";
+import {
+  SafeAreaView,
+  View,
+  Text,
+  TextInput,
+  Button,
+  Keyboard,
+  TouchableWithoutFeedback,
+  StyleSheet,
+} from "react-native";
 
 export default function App() {
+  const [timeOne, onChangeTimeOne] = React.useState(null);
+  const [timeTwo, onChangeTimeTwo] = React.useState(null);
+  const [timeTotal, onChangeTimeTotal] = React.useState(null);
+
+  const DismissKeyboard = ({ children }) => (
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      {children}
+    </TouchableWithoutFeedback>
+  );
+
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.calculator}>
         <View style={styles.totalGroup}>
-          <Text
-            style={{
-              fontSize: 42,
-              textAlign: "center",
-              padding: "24px",
-              margin: "24px auto",
-              color: "#333",
-            }}
-          >
-            Calculate Your Hours
-          </Text>
-          <TextInput style={styles.inputTotal} disabled />
+          <Text style={styles.heading}>Calculate Your Hours</Text>
+          <TextInput
+            style={styles.inputTotal}
+            onChangeText={onChangeTimeTotal}
+            value={timeTotal}
+            placeholder="00:00"
+            keyboardType="numeric"
+            disabled
+          />
         </View>
-        <View style={styles.inputGroup}>
-          <TextInput style={styles.input} />
-          <TextInput style={styles.input} />
-        </View>
+        <DismissKeyboard>
+          <View style={styles.inputGroup}>
+            <TextInput
+              style={styles.input}
+              onChangeText={onChangeTimeOne}
+              value={timeOne}
+              placeholder="00:00"
+              keyboardType="numeric"
+            />
+            <TextInput
+              style={styles.input}
+              onChangeText={onChangeTimeTwo}
+              value={timeTwo}
+              placeholder="00:00"
+              keyboardType="numeric"
+            />
+          </View>
+        </DismissKeyboard>
         <View style={styles.buttonGroup}>
           <Button title="Calculate" />
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     alignContent: "center",
   },
   calculator: {
-    flex: 1,
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    alignContent: "center",
     padding: "64px",
     margin: "64px",
-    backgroundColor: "#fff",
-    borderRadius: 30,
-    border: "2px solid #666",
-    maxWidth: 600,
   },
   totalGroup: {
-    flex: 1,
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    alignContent: "center",
-    maxHeight: 200,
-    width: "100%",
+    padding: "8px",
+    margin: "8px",
   },
   inputGroup: {
     flex: 1,
@@ -69,34 +82,35 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     alignContent: "center",
-    maxHeight: 100,
     width: "100%",
   },
-  buttonGroup: {
-    flex: 1,
-    flexDirection: "column",
-    maxHeight: 100,
-    width: "100%",
+  buttonGroup: { marginVertical: "24px", padding: "8px" },
+  heading: {
+    fontSize: 42,
+    textAlign: "center",
+    marginVertical: "24px",
+    color: "#333",
   },
   inputTotal: {
-    border: "2px solid #666",
     fontSize: 42,
     textAlign: "center",
     width: "100%",
     padding: "8px",
-    margin: "8px",
+    marginVertical: "24px",
     color: "#333",
+    borderColor: "#666",
+    borderWidth: 1,
     borderRadius: 3,
   },
   input: {
-    border: "2px solid #666",
-    fontSize: 42,
+    fontSize: 24,
     textAlign: "center",
-    height: "48px",
     width: "50%",
     padding: "8px",
     margin: "8px",
     color: "#333",
+    borderColor: "#666",
+    borderWidth: 1,
     borderRadius: 3,
   },
 });
