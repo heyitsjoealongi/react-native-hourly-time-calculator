@@ -22,7 +22,7 @@ export default function App() {
   const [timeTotal, setTimeTotal] = useState(timeOne + timeTwo);
 
   function calculateTotal() {
-    setTimeTotal((timeTwo * 24 - timeOne * 24) / 24 / 100);
+    setTimeTotal((timeTwo * 24 - timeOne * 24) / 24 / 60);
   }
 
   return (
