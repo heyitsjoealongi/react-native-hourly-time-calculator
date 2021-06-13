@@ -36,7 +36,6 @@ export default function App() {
           <Text style={styles.heading}>Calculate Your Hours</Text>
           <Text style={styles.inputTotal}>{timeTotal}</Text>
         </View>
-
         <Text style={styles.subHeading}>Time One</Text>
         <DismissKeyboard>
           <View style={styles.inputGroup}>
