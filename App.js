@@ -19,10 +19,14 @@ const DismissKeyboard = ({ children }) => (
 export default function App() {
   const [timeOne, setTimeOne] = useState(0);
   const [timeTwo, setTimeTwo] = useState(0);
-  const [timeTotal, setTimeTotal] = useState(timeOne + timeTwo);
+  const [timeThree, setTimeThree] = useState(0);
+  const [timeFour, setTimeFour] = useState(0);
+  const [timeTotal, setTimeTotal] = useState(
+    ((timeThree - timeOne) * 100 + (timeFour - timeTwo)) / 100
+  );
 
   function calculateTotal() {
-    setTimeTotal((timeTwo * 24 - timeOne * 24) / 24 / 60);
+    setTimeTotal(((timeThree - timeOne) * 100 + (timeFour - timeTwo)) / 100);
   }
 
   return (
@@ -32,22 +36,36 @@ export default function App() {
           <Text style={styles.heading}>Calculate Your Hours</Text>
           <Text style={styles.inputTotal}>{timeTotal}</Text>
         </View>
-        <DismissKeyboard>
-          <View style={styles.inputGroup}>
-            <TextInput
-              style={styles.inputOne}
-              value={timeOne}
-              keyboardType="numeric"
-              onChangeText={(text) => setTimeOne(+text)}
-            />
-            <TextInput
-              style={styles.inputTwo}
-              value={timeTwo}
-              keyboardType="numeric"
-              onChangeText={(text) => setTimeTwo(+text)}
-            />
-          </View>
-        </DismissKeyboard>
+        <Text style={styles.subHeading}>Time One</Text>
+        <View style={styles.inputGroup}>
+          <TextInput
+            style={styles.inputOne}
+            keyboardType="numeric"
+            placeholder="Hour"
+            onChangeText={(text) => setTimeOne(+text)}
+          />
+          <TextInput
+            style={styles.inputTwo}
+            keyboardType="numeric"
+            placeholder="Minutes"
+            onChangeText={(text) => setTimeTwo(+text)}
+          />
+        </View>
+        <Text style={styles.subHeading}>Time Two</Text>
+        <View style={styles.inputGroup}>
+          <TextInput
+            style={styles.inputOne}
+            keyboardType="numeric"
+            placeholder="Hour"
+            onChangeText={(text) => setTimeThree(+text)}
+          />
+          <TextInput
+            style={styles.inputTwo}
+            keyboardType="numeric"
+            placeholder="Minutes"
+            onChangeText={(text) => setTimeFour(+text)}
+          />
+        </View>
         <View style={styles.buttonGroup}>
           <Button title="Calculate" color="#4b5563" onPress={calculateTotal} />
         </View>
@@ -66,6 +84,12 @@ const styles = StyleSheet.create({
     padding: 8,
     margin: 8,
   },
+  heading: {
+    fontSize: 42,
+    textAlign: "center",
+    marginVertical: 16,
+    color: "#333",
+  },
   totalGroup: {
     padding: 8,
     margin: 8,
@@ -83,11 +107,11 @@ const styles = StyleSheet.create({
     borderRadius: 3,
   },
   buttonGroup: { marginVertical: 24, padding: 8 },
-  heading: {
-    fontSize: 42,
+  subHeading: {
+    fontSize: 21,
     textAlign: "center",
     marginVertical: 16,
-    color: "#333",
+    color: "#17baeb",
   },
   inputGroup: {
     flex: 1,
