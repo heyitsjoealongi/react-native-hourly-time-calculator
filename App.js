@@ -10,6 +10,8 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+
 const DismissKeyboard = ({ children }) => (
   <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
     {children}
@@ -30,51 +32,57 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.calculator}>
-        <View style={styles.totalGroup}>
-          <Text style={styles.heading}>Calculate Your Hours</Text>
-          <Text style={styles.inputTotal}>{timeTotal}</Text>
-        </View>
-        <Text style={styles.subHeading}>Time One</Text>
-        <DismissKeyboard>
-          <View style={styles.inputGroup}>
-            <TextInput
-              style={styles.inputOne}
-              keyboardType="numeric"
-              placeholder="Hour"
-              onChangeText={(text) => setTimeOne(+text)}
-            />
-            <TextInput
-              style={styles.inputTwo}
-              keyboardType="numeric"
-              placeholder="Minutes"
-              onChangeText={(text) => setTimeTwo(+text)}
+    <KeyboardAwareScrollView>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.calculator}>
+          <View style={styles.totalGroup}>
+            <Text style={styles.heading}>Calculate Your Hours</Text>
+            <Text style={styles.inputTotal}>{timeTotal}</Text>
+          </View>
+          <Text style={styles.subHeading}>Time One</Text>
+          <DismissKeyboard>
+            <View style={styles.inputGroup}>
+              <TextInput
+                style={styles.inputOne}
+                keyboardType="numeric"
+                placeholder="Hour"
+                onChangeText={(text) => setTimeOne(+text)}
+              />
+              <TextInput
+                style={styles.inputTwo}
+                keyboardType="numeric"
+                placeholder="Minutes"
+                onChangeText={(text) => setTimeTwo(+text)}
+              />
+            </View>
+          </DismissKeyboard>
+          <Text style={styles.subHeading}>Time Two</Text>
+          <DismissKeyboard>
+            <View style={styles.inputGroup}>
+              <TextInput
+                style={styles.inputOne}
+                keyboardType="numeric"
+                placeholder="Hour"
+                onChangeText={(text) => setTimeThree(+text)}
+              />
+              <TextInput
+                style={styles.inputTwo}
+                keyboardType="numeric"
+                placeholder="Minutes"
+                onChangeText={(text) => setTimeFour(+text)}
+              />
+            </View>
+          </DismissKeyboard>
+          <View style={styles.buttonGroup}>
+            <Button
+              title="Calculate"
+              color="#4b5563"
+              onPress={calculateTotal}
             />
           </View>
-        </DismissKeyboard>
-        <Text style={styles.subHeading}>Time Two</Text>
-        <DismissKeyboard>
-          <View style={styles.inputGroup}>
-            <TextInput
-              style={styles.inputOne}
-              keyboardType="numeric"
-              placeholder="Hour"
-              onChangeText={(text) => setTimeThree(+text)}
-            />
-            <TextInput
-              style={styles.inputTwo}
-              keyboardType="numeric"
-              placeholder="Minutes"
-              onChangeText={(text) => setTimeFour(+text)}
-            />
-          </View>
-        </DismissKeyboard>
-        <View style={styles.buttonGroup}>
-          <Button title="Calculate" color="#4b5563" onPress={calculateTotal} />
         </View>
-      </View>
-    </SafeAreaView>
+      </SafeAreaView>
+    </KeyboardAwareScrollView>
   );
 }
 

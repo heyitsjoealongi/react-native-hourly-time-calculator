@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "expo-hourly-time-calculator",
-    "slug": "expo-hourly-time-calculator",
+    "name": "react-native-hourly-time-calculator",
+    "slug": "react-native-hourly-time-calculator",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -13,9 +13,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -29,6 +27,6 @@
       "favicon": "./assets/favicon.png"
     },
     "description": "Mobile/Native Application — React Native Powered by Expo.js | Calculate the duration of time that occurred between two times.",
-    "githubUrl": "https://github.com/collectedview/expo-hourly-time-calculator"
+    "githubUrl": "https://github.com/collectedview/react-native-hourly-time-calculator"
   }
 }
