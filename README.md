@@ -6,8 +6,6 @@
 
 React Native Hourly Time Calculator for calculating the duration of time that occured between two times in ReactNative.js and the [Expo.js](https://expo.io/) framework for simplified mobile & native deployment.
 
-**[View Demo](https://expo.io/@collectedview/react-native-hourly-time-calculator)**
-
 ## Contents
 
 - [About](#about)
